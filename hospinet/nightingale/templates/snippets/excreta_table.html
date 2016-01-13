@@ -1,0 +1,26 @@
+    <table class="table table-striped table-responsive">
+      <caption>Excretas</caption>
+      <thead>
+        <tr>
+          <th>Fecha y Hora</th>
+          <th>Medio</th>
+          <th>Cantidad</th>
+          <th>Descripci&oacute;n</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if admision.excretas.count == 0%}
+        <tr>
+          <td colspan="4">No hay excretas registradas</td>
+        </tr>
+        {% endif%}
+        {% for excretas in admision.excretas.all %}
+        <tr class="{{ excreta.get_turno }}">
+          <td>{{ excretas.fecha_hora }}</td>
+          <td>{{ excretas.medio }}</td>
+          <td>{{ excretas.cantidad }}</td>
+          <td>{{ excretas.descripcion }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>

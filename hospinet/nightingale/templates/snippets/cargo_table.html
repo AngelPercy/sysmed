@@ -1,0 +1,48 @@
+{% load l10n %}
+<table class="table table-striped no-more-tables">
+    <thead>
+    <tr>
+        <th>C&oacute;digo</th>
+        <th>Cargo</th>
+        <th>Cantidad</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if admision.cargos.count == 0 %}
+        <tr>
+            <td colspan="5">No hay cargos registrados</td>
+        </tr>
+    {% endif %}
+    {% for cargo, lista in admision.agrupar_cargos.items %}
+        <tr>
+            <td data-title="Código">{{ cargo.id }}</td>
+            <td data-title="Cargo">
+                {{ cargo }}
+                <ul>
+                    {% for detalle in lista.detalles %}
+                        <li>
+                            {{ detalle.created }} - {{ detalle.usuario }}
+                            Cantidad {{ detalle.cantidad }} {{ detalle.unidad }}
+                            <a class="btn btn-danger no-print"
+                               href="{% url 'enfermeria-cargo-eliminar' detalle.id %}"><i
+                                    class="glyphicon glyphicon-trash"></i></a>
+                            <a class="btn btn-info no-print"
+                               href="{% url 'enfermeria-cargo-editar' detalle.id %}"><i
+                                    class="glyphicon glyphicon-edit"></i></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td data-title="Cantidad">
+                {{ lista.cantidad }}
+            </td>
+            <td data-title="Acciones">
+                <a class="btn btn-primary"
+                   href="{% url 'enfermeria-cargo-pre-agregar' admision.id cargo.id %}"><i
+                        class="icon-plus"></i> Agregar</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

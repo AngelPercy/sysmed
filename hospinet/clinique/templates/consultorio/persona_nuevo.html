@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<form enctype="multipart/form-data" class="styled" method="post">
+  {% csrf_token %} <h3>Agregar un Paciente</h3>
+  <div id="messages"></div>
+  {% include 'snippets/form.html' with form=form %}
+  <p>
+    <input type="submit" value="Guardar" />
+  </p>
+</form>
+{% endblock %}

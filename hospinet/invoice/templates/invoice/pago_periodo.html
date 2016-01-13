@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-content col-md-12">‏
+                <section class="page-header">
+                    <h1>Ingresos por Tipo de Pago
+                        <small>{{ inicio }} al {{ fin }}</small>
+                    </h1>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-content col-md-12">‏
+                <div class="row">
+                    <div class="col-md-12 table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Tipo de pago</th>
+                                <th>Monto</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for pago in group %}
+                                <tr>
+                                    <td>{{ pago.tipo__nombre }}</td>
+                                    <td class="text-right">{{ pago.monto }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <th>Total</th>
+                                <th>{{ total.total }}</th>
+                            </tfoot>
+                        </table>
+                        <table class="table table-striped">
+                            <caption>Pagos</caption>
+                            <thead>
+                            <tr>
+                                <th>Recibo</th>
+                                <th>Fecha y Hora</th>
+                                <th>M&eacute;todo</th>
+                                <th>Monto</th>
+                                <th>Total Recibo</th>
+                                <th>Total Pagado</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for pago in pagos.all %}
+                                <tr>
+                                    <td><a href="{% url 'invoice-view-id' pago.recibo.id %}">{{ pago.recibo }}</a></td>
+                                    <td>{{ pago.created }}</td>
+                                    <td>{{ pago.tipo }}</td>
+                                    <td>{{ pago.monto }}</td>
+                                    <td>{{ pago.recibo.total }}</td>
+                                    <td>{{ pago.recibo.pagado }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

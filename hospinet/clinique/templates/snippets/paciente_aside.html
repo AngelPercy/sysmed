@@ -1,0 +1,32 @@
+<nav class="sidebar-nav">
+    <ul class="nav nav-tabs nav-stacked">
+        <li>
+            {% for consultorio in user.consultorios.all %}
+                <a href="{% url 'consultorio-espera-agregar' paciente.id consultorio.id %}">Agregar
+                    Paciente a Sala de Espera de {{ consultorio }}</a>
+            {% endfor %}
+        </li>
+        <li>
+            {% for consultorio in user.consultorios.all %}
+                <a href="{% url 'consultorio-consulta-agregar' paciente.id consultorio.id %}">Agregar Consulta Inicial de {{ consultorio }}</a>
+            {% endfor %}
+        </li>
+        <li>
+            <a href="{% url 'clinique-notas' paciente.id %}"><i class="fa fa-pencil"></i> Notas de Enfermeria</a>
+        </li>
+        <li>
+            <a href="{% url 'clinique-signos' paciente.id %}"><i class="fa fa-heart"></i> Signos Vitales</a>
+        </li>
+        <li>
+            <a href="{% url 'consultorio-citapersona-agregar' paciente.id %}">Crear Cita</a>
+        </li>
+        <li>
+            <a href="{% url 'consultorio-remision-agregar' paciente.id %}">
+                Remitir Paciente
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'persona-view-id' paciente.id %}">Ficha Personal</a>
+        </li>
+    </ul>
+</nav>

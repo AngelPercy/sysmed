@@ -1,0 +1,18 @@
+Django
+Pillow
+django-bootstrap-pagination
+django-constance[database]
+django-countries
+django-crispy-forms
+django-extensions
+django-csvimport
+-e git+git://github.com/theatlantic/django-select2-forms.git#egg=django-select2-forms
+django-tastypie
+django-templated-email
+django-userena
+django-extra-views
+simplejson
+six
+unicodecsv
+pytz
+django-picklefield

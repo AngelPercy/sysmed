@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}{% load thumbnail %}
+{% block title %} Contratos{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="page-header">
+            <h1>Contratos
+                <small>de {{ inicio }} al {{ fin }}</small>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <section class="col-md-9">
+            <div class="main-content col-md-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>N&uacute;mero</th>
+                        <th>Titular</th>
+                        <th>Plan</th>
+                        <th>Precio</th>
+                        <th>Vendedor</th>
+                        <th>Vencimiento</th>
+                        <th>Comisi&oacute;n</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for contrato in contratos %}
+                        <tr>
+                            <td><a class="btn btn-success"
+                                   href="{% url 'contrato' contrato.id %}">{{ contrato.numero }}</a>
+                            </td>
+                            <td>{{ contrato.persona }}</td>
+                            <td>{{ contrato.plan }}</td>
+                            <td>{{ contrato.plan.precio }}</td>
+                            <td>{{ contrato.vendedor }}</td>
+                            <td>{{ contrato.vencimiento|date:"d/m/Y" }}</td>
+                            <td>{{ contrato.persona.telefono }}</td>
+                            <td>{{ contrato.comision }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="7">Total Comisiones</th>
+                            <th>{{ comision }}</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+    </div>
+{% endblock %}

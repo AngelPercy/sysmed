@@ -1,0 +1,9 @@
+{% block subject %}Examen Disponible...! {% endblock %}
+{% block plain %}
+Hola!
+
+¡Hay un examen pendiente de revision 
+
+Para verlo, ve a {{ link_examen }}
+
+{% endblock %}

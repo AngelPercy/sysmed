@@ -1,0 +1,58 @@
+  <section class="info">
+
+  {% for estudio in estudios_programados %}
+                        <tr>
+                            <td>{{ estudio.fecha }}</td>
+                            <td>{{ estudio.persona.nombre_completo }}</td>
+                            <td>{{ estudio.tipo_de_examen.nombre }}</td>
+                            <td>{{ estudio.remitio }}</td>
+                            <td><a class="btn btn-danger" href="{% url 'examen-efectuar' estudio.id %}">Efectuar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+      <ul>
+          <li>Fecha {{ examen.fecha|date:"d/m/Y" }}</li>
+          <li>Estudio Efectuado: {{ examen.tipo_de_examen.nombre }}</li>
+          <li>Remiti&oacute;: {{ examen.remitio }}</li>
+          <li>T&eacute;nico: {{ examen.usuario }}</li>
+      	</ul>
+  <table class="table table-striped">
+    <caption>Detalles de Radiologia</caption>
+    <tr>
+        <td class="data-label">N° de RX:</td>
+        <td class="patient-data">{{ examen.n_rx }}</td>
+        <td class="data-label">FECHA:</td>
+        <td class="patient-data">{{ examen.fecha }}</td>
+        <td class="data-label">CALIDAD:</td>
+        <td class="patient-data">{{ examen.calidad }}</td>
+    </tr>
+    <tr>
+    	<td class="data-label">SIMBOLO:</td>
+        <td class="patient-data">{{ examen.calidad }}</td>
+        <td class="data-label">CAMPO PULMONAR:</td>
+        <td class="patient-data">{{ examen.campo_pulmonar }}</td>
+        <td class="data-label">HILIOS:</td>
+        <td class="patient-data">{{ examen.hilios }}</td>        
+    </tr>
+    <tr>
+    	<td class="data-label">MEDIASTINO:</td>
+        <td class="patient-data">{{ examen.mediastino }}</td>
+        <td class="data-label">SENOS:</td>
+        <td class="patient-data">{{ examen.senos }}</td>
+        <td class="data-label">SILUETA CARDIOVASCULAR:</td>
+        <td class="patient-data">{{ examen.silueta_cardiovascular }}</td>                
+    </tr>
+    <tr>
+    	<td class="data-label">CONCULSIONES RADIOGRAFICAS:</td>
+        <td class="patient-data">{{ examen.conclu_radiograficas }}</td>
+        <td class="data-label">NORMAL:</td>
+        <td class="patient-data">{{ examen.get_normal_display }}</td>
+        <td class="data-label">SOSPECHA:</td>
+        <td class="patient-data">{{ examen.get_sospecha_display }}</td>
+    </tr>
+    <tr>
+     	  <td class="data-label">CON NEUMOCONIOSIS:</td>
+        <td class="patient-data">{{ examen.get_con_neumoconiosis_display }}</td>
+    </tr>
+  </table>
+</section>

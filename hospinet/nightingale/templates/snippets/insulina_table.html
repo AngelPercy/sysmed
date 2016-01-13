@@ -1,0 +1,24 @@
+    <table class="table table-striped table-responsive">
+      <caption>Administraci&oacute;n de Insulina</caption>
+      <thead class="gradient">
+        <tr>
+          <th>Fecha y Hora</th>
+          <th>Control</th>
+          <th>Observaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if admision.insulina.count == 0%}
+        <tr>
+          <td colspan="3">No hay registros de insulina</td>
+        </tr>
+        {% endif%}
+        {% for insulina in admision.insulina.all %}
+        <tr class="{{ insulina.get_turno }}">
+          <td>{{ insulina.fecha_y_hora }}</td>
+          <td>{{ insulina.control }}</td>
+          <td>{{ insulina.observacion }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>

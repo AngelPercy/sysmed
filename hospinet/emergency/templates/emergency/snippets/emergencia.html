@@ -1,0 +1,87 @@
+<div class="row">
+  <section class="col-md-9">
+      <div class="col-md-12">‏
+          <p>
+          {{ emergencia.historia_enfermedad_actual }}
+        </p>
+        <ul>
+          <li>
+            Pulso: {{ emergencia.pulso }}
+          </li>
+          <li>
+            Frecuencia Respiratoria: {{ emergencia.frecuencia_respiratoria }}
+          </li>
+          <li>
+            Temperatura: {{ emergencia.temperatura }}
+          </li>
+          <li>
+            Presi&oacute;n: {{ emergencia.presion }}
+          </li>
+          <li>
+            Frecuencia Cardiaca: {{ emergencia.frecuencia_cardiaca }}
+          </li>
+          <li>
+            Respiraci&oacute;n: {{ emergencia.respiracion }}
+          </li>
+          <li>
+            Saturacion de ox&iacute;geno: {{ emergencia.saturacion_de_oxigeno}}
+          </li>
+        </ul>
+      </div>
+  </section>
+</div>
+<div class="row">
+  <section id="hallazgos" class="col-md-4">
+    <div class="page-header">
+      <h3>Hallazgos</h3>
+    </div>
+    {% for hallazgo in emergencia.hallazgos.all %}
+    <article class="hallazgo">
+      <p>
+        {{ hallazgo.hallazgo }}
+      </p>
+    </article>
+    {% endfor %}
+  </section>
+  <section id="tratamientos" class="col-md-5">
+    <div class="page-header">
+      <h3>Tratamientos</h3>
+    </div>
+    {% for tratamiento in emergencia.tratamientos.all %}
+    <article class="tratamiento">
+      <p>
+        Indicaciones: {{ tratamiento.indicaciones }}
+      </p>
+    </article>
+    {% endfor %}
+  </section>
+</div>
+<div class="row">
+  {% for remision_interna in emergencia.remisiones_externas.all %}
+  <article class="col-md-4">
+    <h3>Remisi&oacute;n a Especialista</h3>
+    <p>
+      M&eacute;dico: {{ remision_interna.doctor }}
+    </p>
+  </article>
+  {% endfor %}
+  {% for remision_externa in emergencia.remisiones_externas.all %}
+  <article class="col-md-4">
+    <h3>Remisi&oacute;n a otro Centro</h3>
+    <p>
+      Destino: {{ remision_externa.destino }}
+    </p>
+    <p>
+      Diagn&oacute;stico: {{ remision_externa.diagnostico }}
+    </p>
+    <p>
+      Notas: {{ remision_externa.notas }}
+    </p>
+  </article>
+  {% endfor %}
+</div>
+<section id="cargos">
+  {% include 'emergency/snippets/cargos.html' with emergencia=emergencia %}
+</section>
+{% include 'emergency/snippets/examen_fisico.html' with emergencia=emergencia %}
+{% include 'emergency/snippets/diagnosticos.html' with emergencia=emergencia %}

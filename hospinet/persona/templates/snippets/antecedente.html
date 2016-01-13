@@ -1,0 +1,488 @@
+<div class="table-responsive">
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+</style>
+<table class="table table-striped">
+    <tr>
+        <td colspan="6"><strong>PELIGROS Y RIEGOS OCUPACIONALES</strong></td>
+        
+    </tr>
+    <tr>
+        <td class="data-label">Ruido</td>
+        <td class="patient-data">{{ antecedente.ruido|yesno:"Sí,No" }}</td>
+        <td class="data-label">Polvo</td>
+        <td class="patient-data">{{ antecedente.polvo|yesno:"Sí,No" }}</td>
+        <td class="data-label">Vibracion</td>
+        <td class="patient-data">{{ antecedente.vibracion|yesno:"Sí,No" }}</td>
+        <td class="data-label">Segmentaria</td>
+        <td class="patient-data">{{ antecedente.segmentaria|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">Vibracion Total</td>
+        <td class="patient-data">{{ antecedente.vibracion_total|yesno:"Sí,No" }}</td>
+        <td class="data-label">Cancerigeno</td>
+        <td class="patient-data">{{ antecedente.cancerigeno|yesno:"Sí,No" }}</td>
+        <td class="data-label">Mutagenico</td>
+        <td class="patient-data">{{ antecedente.mutagenico|yesno:"Sí,No" }}</td>
+        <td class="data-label">Metales</td>
+        <td class="patient-data">{{ antecedente.metales|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">Pesados</td>
+        <td class="patient-data">{{ antecedente.pesados|yesno:"Sí,No" }}</td>
+        <td class="data-label">Solventes</td>
+        <td class="patient-data">{{ antecedente.solventes|yesno:"Sí,No" }}</td>
+        <td class="data-label">Temperatura</td>
+        <td class="patient-data">{{ antecedente.temperatura|yesno:"Sí,No" }}</td>
+        <td class="data-label">Biologicos</td>
+        <td class="patient-data">{{ antecedente.Biologico|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">Posturas</td>
+        <td class="patient-data">{{ antecedente.postura|yesno:"Sí,No" }}</td>
+        <td class="data-label">Turnos Noche</td>
+        <td class="patient-data">{{ antecedente.turno_noche|yesno:"Sí,No" }}</td>
+        <td class="data-label">Cargas</td>
+        <td class="patient-data">{{ antecedente.carga|yesno:"Sí,No" }}</td>
+        <td class="data-label">Movimiento</td>
+        <td class="patient-data">{{ antecedente.movimiento|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">Repetitivo</td>
+        <td class="patient-data">{{ antecedente.repetitivo|yesno:"Sí,No" }}</td>
+        <td class="data-label">Otros</td>
+        <td class="patient-data">{{ antecedente.otro_a|yesno:"Sí,No" }}</td>        
+    </tr>
+    <tr>
+        <td colspan="6"><strong>ANTECEDENDES PERSONALES Y OCUPACIONALES</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">HTA</td>
+        <td class="patient-data">{{ antecedente.hta|yesno:"Sí,No" }}</td>
+        <td class="data-label">DM</td>
+        <td class="patient-data">{{ antecedente.dm|yesno:"Sí,No" }}</td>
+        <td class="data-label">ASMA</td>
+        <td class="patient-data">{{ antecedente.asma|yesno:"Sí,No" }}</td>
+        <td class="data-label">RAM</td>
+        <td class="patient-data">{{ antecedente.ram|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">H.Tg</td>
+        <td class="patient-data">{{ antecedente.h_tg|yesno:"Sí,No" }}</td>
+        <td class="data-label">H.Col</td>
+        <td class="patient-data">{{ antecedente.h_col|yesno:"Sí,No" }}</td>
+        <td class="data-label">Prob. CV</td>
+        <td class="patient-data">{{ antecedente.prob_cv|yesno:"Sí,No" }}</td>
+        <td class="data-label">Alergias</td>
+        <td class="patient-data">{{ antecedente.alergias }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">Antropatias</td>
+        <td class="patient-data">{{ antecedente.antropatia|yesno:"Sí,No" }}</td>
+        <td class="data-label">Pt. Columna</td>
+        <td class="patient-data">{{ antecedente.pt_columna|yesno:"Sí,No" }}</td>
+        <td class="data-label">Sinusitis</td>
+        <td class="patient-data">{{ antecedente.sinusitis|yesno:"Sí,No" }}</td>
+        <td class="data-label">Migraña</td>
+        <td class="patient-data">{{ antecedente.migrana|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">Colitis</td>
+        <td class="patient-data">{{ antecedente.colitis|yesno:"Sí,No" }}</td>
+        <td class="data-label">HPB</td>
+        <td class="patient-data">{{ antecedente.hpb|yesno:"Sí,No" }}</td>
+        <td class="data-label">Migrana</td>
+        <td class="patient-data">{{ antecedente.migrana|yesno:"Sí,No" }}</td>
+        <td class="data-label">Cirugias</td>
+        <td class="patient-data">{{ antecedente.cirugia|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">Sd Metabolico</td>
+        <td class="patient-data">{{ antecedente.sd_metabolico|yesno:"Sí,No" }}</td>
+        <td class="data-label">Cancer</td>
+        <td class="patient-data">{{ antecedente.cancer|yesno:"Sí,No" }}</td>
+        <td class="data-label">Problema Renal</td>
+        <td class="patient-data">{{ antecedente.problema_renal|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">Tabaco</td>
+        <td class="patient-data">{{ antecedente.get_tabaco_display }}</td>
+        <td class="data-label">Coca</td>
+        <td class="patient-data">{{ antecedente.get_coca_display }}</td>
+        <td class="data-label">Alcohol</td>
+        <td class="patient-data">{{ antecedente.get_alcohol_display }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">Medicacion Actual</td>
+        <td class="patient-data">{{ antecedente.medicacion_actual }}</td>
+        <td class="data-label">Observaciones</td>
+        <td class="patient-data">{{ antecedente.otros_b }}</td>
+    </tr>
+    <tr>
+        <td colspan="6"><strong>EXAMEN FISICO REGIONAL</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">ECTOSCOPIA</td>
+        <td class="patient-data">{{ antecedente.ectoscopia|yesno:"Sí,No" }}</td>
+        <td class="data-label">ABEC</td>
+        <td class="patient-data">{{ antecedente.abec|yesno:"Sí,No" }}</td>
+        <td class="data-label">ABEH</td>
+        <td class="patient-data">{{ antecedente.abeh|yesno:"Sí,No" }}</td>
+        <td class="data-label">ABEN</td>
+        <td class="patient-data">{{ antecedente.aben|yesno:"Sí,No" }}</td>
+        
+    </tr>
+    <tr>
+        <td class="data-label">LOTEP</td>
+        <td class="patient-data">{{ antecedente.lotep|yesno:"Sí,No" }}</td>
+        <td class="data-label">ANORMALIDADES</td>
+        <td class="patient-data">{{ antecedente.anormalidades }}</td>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_c }}</td>
+    </tr>
+    <tr>
+        <td colspan="6"><strong>BOCA AMIGDALAS, FARINGE, LARINGE</strong></td>
+    </tr>
+    <tr>
+        <td colspan="6"><h6> s/a labios sin lesiones, mucosa oral rosada brillante humeda faringe congestiva no reacciones</h6></td>
+    </tr>
+    <tr>
+        <td class="data-label">NORMAL</td>
+        <td class="patient-data">{{ antecedente.boca_amigdalas|yesno:"Si,No" }}</td>
+        <td class="data-label">ANORMALIDADES</td>
+        <td class="patient-data">{{ antecedente.anorma_a|yesno:"Si,No" }}</td>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.descr_c }}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>GENITALES</strong></td>
+        <td colspan="2"><strong>CUELLO</strong></td>
+        <td colspan="2"><strong>NARIZ</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">NORMAL</td>
+        <td class="patient-data">{{ antecedente.genitales_normal|yesno:"Sí,No" }}</td>
+        <td class="data-label">NORMAL</td>
+        <td class="patient-data">{{ antecedente.cuello_normal|yesno:"Sí,No" }}</td>
+        <td class="data-label">NORMAL</td>
+        <td class="patient-data">{{ antecedente.nariz_normal|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">ANORMAL</td>
+        <td class="patient-data">{{ antecedente.genitales_anormal|yesno:"Sí,No" }}</td>
+        <td class="data-label">ANORMAL</td>
+        <td class="patient-data">{{ antecedente.cuello_anormal|yesno:"Sí,No" }}</td>
+        <td class="data-label">ANORMAL</td>
+        <td class="patient-data">{{ antecedente.nariz_anormal|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_d }}</td>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_e }}</td>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_f }}</td>
+    </tr>
+    <tr>
+        <td colspan="6"><strong>DENTADURA (LLENAR Y ADJUNTAR EL ODONTOGRAMA DE ACUERDO A LA NORMA DE MINSA)</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">EDENTULO PARCIAL</td>
+        <td class="patient-data">{{ antecedente.get_edentulo_parcial_display }}</td>
+        <td class="data-label">EDENTULO TOTAL</td>
+        <td class="patient-data">{{ antecedente.get_edentulo_total_display }}</td>
+        <td class="data-label">PPF</td>
+        <td class="patient-data">{{ antecedente.get_ppf_display }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">GINGIVITIS</td>
+        <td class="patient-data">{{ antecedente.get_gingivitis_display }}</td>
+        <td class="data-label">PPR</td>
+        <td class="patient-data">{{ antecedente.get_ppr_total_display }}</td>
+        <td class="data-label">PIEZAS EN MAL ESTADO</td>
+        <td class="patient-data">{{ antecedente.piezas_mal_estado }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">PIEZAS QUE FALTAN</td>
+        <td class="patient-data">{{ antecedente.piezas_faltan }}</td>
+    </tr>
+    <tr>
+        <td colspan="8"><strong>OJOS (ENFERMEDADES OCULARES)</strong></td>
+    </tr>
+    <tr>
+        <td colspan="4"><strong>SIN CORREGIR</strong></td>
+        <td colspan="4"><strong>CORREGIDA</strong></td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>OD</strong></td>
+        <td colspan="2"><strong>OI</strong></td>
+        <td colspan="2"><strong>OD</strong></td>
+        <td colspan="2"><strong>OI</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">V/CERCA</td>
+        <td class="patient-data">{{ antecedente.v_c_o_d_sin_corregir }}</td>
+        <td class="data-label">V/CERCA</td>
+        <td class="patient-data">{{ antecedente.v_c_o_i_sin_corregir }}</td>
+        <td class="data-label">V/CERCA</td>
+        <td class="patient-data">{{ antecedente.v_c_o_d_corregida }}</td>
+        <td class="data-label">V/CERCA</td>
+        <td class="patient-data">{{ antecedente.v_c_o_i_corregida }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">V/LEJOS</td>
+        <td class="patient-data">{{ antecedente.v_l_o_d_sin_corregir }}</td>
+        <td class="data-label">V/LEJOS</td>
+        <td class="patient-data">{{ antecedente.v_l_o_i_sin_corregir }}</td>
+        <td class="data-label">V/LEJOS</td>
+        <td class="patient-data">{{ antecedente.v_l_o_i_corregida }}</td>
+        <td class="data-label">V/LEJOS</td>
+        <td class="patient-data">{{ antecedente.v_l_o_d_corregida }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">VISION DE COLORES NORMAL</td>
+        <td class="patient-data">{{ antecedente.get_vision_colores_normal_display }}</td>
+        <td class="data-label">VISION COLORES NISTAGNOS</td>
+        <td class="patient-data">{{ antecedente.get_vision_colores_nistagnos_display }}</td>
+     </tr>
+     <tr>
+        <td colspan="4"><strong>ENFERMEDAD OCULAR DESCRIPCION</strong></td>
+    </tr>
+     <tr>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.Enfermedad_ocular_descrip }}</td>
+        <td class="data-label">SIN ALTERACIONES</td>
+        <td class="patient-data">{{ antecedente.sin_alteraciones }}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>TIMPANO DERECHO (OIDOS)</strong></td>
+        <td colspan="2"><strong>TIMPANO IZQUIER (OIDOS)</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">TRIANGULO DE LUZ</td>
+        <td class="patient-data">{{ antecedente.get_t_d_triangulo_de_luz_display }}</td>
+        <td class="data-label">TRIANGULO DE LUZ</td>
+        <td class="patient-data">{{ antecedente.get_t_i_triangulo_de_luz_display }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">PERFORACIONES</td>
+        <td class="patient-data">{{ antecedente.get_t_d_perforaciones_display }}</td>
+        <td class="data-label">PERFORACIONES</td>
+        <td class="patient-data">{{ antecedente.get_t_i_perforaciones_display }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">ABOMBAMIENTO</td>
+        <td class="patient-data">{{ antecedente.get_t_d_abombamiento_display }}</td>
+        <td class="data-label">ABOMBAMIENTO</td>
+        <td class="patient-data">{{ antecedente.get_t_i_abombamiento_display }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">TAPON CERUMEN</td>
+        <td class="patient-data">{{ antecedente.get_t_d_tapon_cerumen_display }}</td>
+        <td class="data-label">TAPON CERUMEN</td>
+        <td class="patient-data">{{ antecedente.get_t_i_tapon_cerumen_display }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">OBSERVACIONES</td>
+        <td class="patient-data">{{ antecedente.t_d_observaciones }}</td>
+        <td class="data-label">OBSERVACIONES</td>
+        <td class="patient-data">{{ antecedente.t_i_observaciones }}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>AUDICION DERECHO</strong></td>
+        <td colspan="2"><strong>AUDICION IZQUIERDO</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">HZ dB(A) 500</td>
+        <td class="patient-data">{{ antecedente.audicion_d_hz_500 }}</td>
+        <td class="data-label">HZ dB(A) 500</td>
+        <td class="patient-data">{{ antecedente.audicion_i_hz_500 }}</td>
+    <tr>
+        <td class="data-label">HZ dB(A) 1000</td>
+        <td class="patient-data">{{ antecedente.audicion_d_hz_1000 }}</td>
+        <td class="data-label">HZ dB(A) 1000</td>
+        <td class="patient-data">{{ antecedente.audicion_i_hz_1000 }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">HZ dB(A) 2000</td>
+        <td class="patient-data">{{ antecedente.audicion_d_hz_2000 }}</td>
+        <td class="data-label">HZ dB(A) 2000</td>
+        <td class="patient-data">{{ antecedente.audicion_i_hz_2000 }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">HZ dB(A) 3000</td>
+        <td class="patient-data">{{ antecedente.audicion_d_hz_3000 }}</td>
+        <td class="data-label">HZ dB(A) 3000</td>
+        <td class="patient-data">{{ antecedente.audicion_i_hz_3000 }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">HZ dB(A) 4000</td>
+        <td class="patient-data">{{ antecedente.audicion_d_hz_4000 }}</td>
+        <td class="data-label">HZ dB(A) 4000</td>
+        <td class="patient-data">{{ antecedente.audicion_i_hz_4000 }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">HZ dB(A) 6000</td>
+        <td class="patient-data">{{ antecedente.audicion_d_hz_6000 }}</td>
+        <td class="data-label">HZ dB(A) 6000</td>
+        <td class="patient-data">{{ antecedente.audicion_i_hz_6000 }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">HZ dB(A) 8000</td>
+        <td class="patient-data">{{ antecedente.audicion_d_hz_8000 }}</td>
+        <td class="data-label">HZ dB(A) 8000</td>
+        <td class="patient-data">{{ antecedente.audicion_i_hz_8000 }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">CONSERVADA</td>
+        <td class="patient-data">{{ antecedente.derecha_conservada|yesno:"Sí,No" }}</td>
+        <td class="data-label">CONSERVADA</td>
+        <td class="patient-data">{{ antecedente.izquierdo_conservada|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">COMENTARIOS</td>
+        <td class="patient-data">{{ antecedente.comentario }}</td>
+        <td class="data-label">COMENTARIOS</td>
+        <td class="patient-data">{{ antecedente.comentarios }}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>TORAX</strong></td>
+        <td colspan="2"><strong>CORAZON</strong></td>
+        <td colspan="2"><strong>PULMONES</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">ECTOSCOPIA NORMAL</td>
+        <td class="patient-data">{{ antecedente.torax_ectoscopia_normal|yesno:"Sí,No" }}</td>
+        <td class="data-label">NORMAL</td>
+        <td class="patient-data">{{ antecedente.corazon_normal|yesno:"Sí,No" }}</td>
+        <td class="data-label">NORMAL</td>
+        <td class="patient-data">{{ antecedente.pulmones_normal|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">ECTOSCOPIA ANORMAL</td>
+        <td class="patient-data">{{ antecedente.torax_ectoscopia_anormal|yesno:"Sí,No" }}</td>
+        <td class="data-label">ANORMAL</td>
+        <td class="patient-data">{{ antecedente.corazon_anormal|yesno:"Sí,No" }}</td>
+        <td class="data-label">ANORMAL</td>
+        <td class="patient-data">{{ antecedente.pulmones_anormal|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_g }}</td>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_h }}</td>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_i }}</td>
+    </tr>
+    <tr>
+        <td colspan="6"><strong>SISTEMA OSEO MIO ARTICULAR</strong></td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>MIEMBRO SUPERIOR DERECHO</strong></td>
+        <td colspan="2"><strong>MIEMBRO SUPERIOR IZQUIERDO</strong></td>
+     </tr>
+     <tr>
+        <td class="data-label">NORMAL</td>
+        <td class="patient-data">{{ antecedente.miembro_sup_der_normal|yesno:"Sí,No" }}</td>
+        <td class="data-label">NORMAL</td>
+        <td class="patient-data">{{ antecedente.miembro_sup_izq_normal|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">ANORMAL</td>
+        <td class="patient-data">{{ antecedente.mienbro_sup_der_anormal|yesno:"Sí,No" }}</td>
+        <td class="data-label">ANORMAL</td>
+        <td class="patient-data">{{ antecedente.miembro_sup_izq_anormal|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_j }}</td>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_k }}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>MIEMBRO INFERIOR DERECHO</strong></td>
+        <td colspan="2"><strong>MIEMBRO INFERIOR IZQUIERDO</strong></td>
+     </tr>
+     <tr>
+        <td class="data-label">NORMAL</td>
+        <td class="patient-data">{{ antecedente.miembro_infe_der_normal|yesno:"Sí,No" }}</td>
+        <td class="data-label">NORMAL</td>
+        <td class="patient-data">{{ antecedente.miembro_infe_izq_normal|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">ANORMAL</td>
+        <td class="patient-data">{{ antecedente.mienbro_infe_der_anormal|yesno:"Sí,No" }}</td>
+        <td class="data-label">ANORMAL</td>
+        <td class="patient-data">{{ antecedente.miembro_infe_izq_anormal|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_l }}</td>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_m }}</td>
+    </tr>
+    <tr>
+        <td colspan="6"><strong>REFLEJOS OSTEODENTINOS</strong></td>
+        <td colspan="6"><strong>MARCHA</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">PRESENTES</td>
+        <td class="patient-data">{{ antecedente.presentes|yesno:"Sí,No" }}</td>
+        <td class="data-label">NORMOREFLEXIA</td>
+        <td class="patient-data">{{ antecedente.normoreflexia|yesno:"Sí,No" }}</td>
+        <td class="data-label">HIPEREFLEXIA</td>
+        <td class="patient-data">{{ antecedente.hipereflexia|yesno:"Sí,No" }}</td>
+        <td class="data-label">CONSERVADA</td>
+        <td class="patient-data">{{ antecedente.marcha_conservada }}</td>
+    </tr>
+    <tr>
+        <td colspan="6"><strong>COLUMNA VERTEBRAL</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">NORMAL</td>
+        <td class="patient-data">{{ antecedente.columna_vert_normal|yesno:"Sí,No" }}</td>
+        <td class="data-label">ANORMAL</td>
+        <td class="patient-data">{{ antecedente.columna_vert_anormal|yesno:"Sí,No" }}</td>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_n }}</td>
+    </tr>
+    <tr>
+        <td colspan="6"><strong>ABDOMEN</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">NORMAL</td>
+        <td class="patient-data">{{ antecedente.abdomen_normal|yesno:"Sí,No" }}</td>
+        <td class="data-label">ANORMAL</td>
+        <td class="patient-data">{{ antecedente.abdomen_anormal|yesno:"Sí,No" }}</td>
+        <td class="data-label">DESCRIPCION</td>
+        <td class="patient-data">{{ antecedente.desc_l }}</td>
+    </tr>
+    <tr>
+        <td colspan="6"><strong>ABDOMEN DETALLES</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">PRUEBA SUP DRCH</td>
+        <td class="patient-data">{{ antecedente.get_pru_sup_der_display }}</td>
+        <td class="data-label">PRU SUP IZQ</td>
+        <td class="patient-data">{{ antecedente.get_pru_sup_izq_display }}</td>
+        <td class="data-label">PRU MED DRCH</td>
+        <td class="patient-data">{{ antecedente.get_pru_med_der_display }}</td>
+    </tr>
+    <tr>
+        <td colspan="6"><strong>PSICOLOGICO</strong></td>
+    </tr>
+    <tr>
+        <td class="data-label">CONDICION DEL PACIENTE</td>
+        <td class="patient-data">{{ antecedente.get_psicologico_display }}</td>
+        
+    </tr>
+
+</table>
+</div>

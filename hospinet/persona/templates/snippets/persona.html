@@ -1,0 +1,49 @@
+<div class="table-responsive">
+<table class="table table-striped">
+  <caption class="persona">Datos Personales</caption>
+  <tr>
+    <th>Establecimiento</th>
+    <td>{{ persona.establecimiento }}</td>
+    <th>Proyecto</th>
+    <td>{{ persona.proyecto }}</td>
+    <th>Fecha de Examen</th>
+    <td>{{ persona.fecha_examen }}</td>
+  </tr>
+  <tr>
+    <th>D.N.I</th>
+    <td>{{ persona.identificacion }}</td>
+    <th>Sexo</th>
+    <td>{{ persona.get_sexo_display }}</td>
+    <th>Edad</th>
+    <td>{{ persona.obtener_edad }} a&ntilde;os</td>
+  </tr>
+  <tr>
+    <th>Fecha Nacimiento</th>
+    <td>{{ persona.nacimiento|date:"d/m/Y" }}</td>
+    <th>Estado Civil</th>
+    <td>{{ persona.get_estado_civil_display }}</td>
+    <th>Grado de Instruccion</th>
+    <td>{{ persona.profesion }}</td>
+  </tr>
+  <tr>
+    <th>Telefono</th>
+    <td>{{ persona.telefono }}</td>
+    <th>Direcci&oacute;n</th>
+    <td>{{ persona.domicilio }}</td>
+    <th>Celular</th>
+    <td>{{ persona.celular }}</td>
+  </tr>
+  <tr>    
+      <th>Email:</th>
+      <td>{{ persona.email }}</td>
+      <th colspan="2">&nbsp;</th>
+  </tr>
+  <tr>
+      <th>Examen Medico:</th>
+      <td>{{ persona.get_examen_medico_display }}</td>
+      <th>Tipo de Trabajo a Realizar:</th>
+      <td>{{ persona.get_trabajo_realizar_display }}</td>
+  
+  </tr>
+</table>
+</div>

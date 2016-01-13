@@ -1,0 +1,27 @@
+<div class="table-responsive">
+<table class="table table-striped">
+    <caption>Antecedente Familiar</caption>
+    <tr>
+        <td class="data-label">MAMA:</td>
+        <td class="patient-data">{{ antecedente.mama }}</td>
+        <td class="data-label">PAPA:</td>
+        <td class="patient-data">{{ antecedente.papa }}</td>
+        <td class="data-label">HERMANO:</td>
+        <td class="patient-data">{{ antecedente.hermano }}</td>
+        <td class="data-label">SIN IMPORTANCIA:</td>
+        <td class="patient-data">{{ antecedente.sin_importancia|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+
+        <td class="data-label">CON IMPORTANCIA</td>
+        <td class="patient-data">{{ antecedente.con_importancia|yesno:"Sí,No" }}</td>
+        <td class="data-label">HIJOS VIVOS:</td>
+        <td class="patient-data">{{ antecedente.vivos|yesno:"Sí,No" }}</td>
+        <td class="data-label">N° de HIJOS:</td>
+        <td class="patient-data">{{ antecedente.n_hijos }}</td>
+        <td class="data-label">Observaciones</td>
+        <td class="patient-data">{{ antecedente.otros }}</td>
+    </tr>
+    
+</table>
+</div>

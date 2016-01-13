@@ -1,0 +1,129 @@
+<table class="table table-striped table-responsive">
+	<caption>Examen Audiometrica</caption>
+  <tbody>
+    <tr>
+      <td class="data-label">FECHA DE EXAMEN:</td>
+      <td class="patient-data">{{ estilo_vida.fecha_examen }}</td>
+      <td class="data-label">EMPRESA:</td>
+      <td class="patient-data">{{ estilo_vida.empr }}</td>
+      <td class="data-label">OCUPACION:</td>
+      <td class="patient-data">{{ estilo_vida.ocupacion }}</td>
+    
+    </tr>
+    <tr>
+    	<td colspan="6">Alcohol</td>
+    </tr>
+    <tr>
+      <td class="data-label">AÑOS DE TRABAJO:</td>
+      <td class="patient-data">{{ estilo_vida.anos_trabajo }}</td>
+      <td class="data-label">TIEMPO DE EXPOSICION:</td>
+      <td class="patient-data">{{ estilo_vida.tiempo_exposicion }}</td>
+      <td class="data-label">APRESIACION DE RUIDO:</td>
+      <td class="patient-data">{{ estilo_vida.apresiacion_ruido }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">AUDIOMETRIA ANTERIOR:</td>
+      <td class="patient-data">{{ estilo_vida.audiometria_ante }}</td>
+      <td class="data-label">RESULTADO AUDIOMETRICA:</td>
+      <td class="patient-data">{{ estilo_vida.resul_audiomet }}</td>
+      <td class="data-label">ANTECEDENTES:</td>
+      <td class="patient-data">{{ estilo_vida.antecedentes }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">MEDICINA OTOTOXICOS:</td>
+      <td class="patient-data">{{ estilo_vida.med_ototoxicos|yesno:"Sí,No" }}</td>
+      <td class="data-label">MENINGITIS:</td>
+      <td class="patient-data">{{ estilo_vida.meningitis|yesno:"Sí,No"}}</td>
+      <td class="data-label">SARAMPION:</td>
+      <td class="patient-data">{{ estilo_vida.sarampion|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">PAROTIDITIS:</td>
+      <td class="patient-data">{{ estilo_vida.parotiditis|yesno:"Sí,No" }}</td>
+      <td class="data-label">BUCEO:</td>
+      <td class="patient-data">{{ estilo_vida.buceo|yesno:"Sí,No" }}</td>
+      <td class="data-label">EXPOSICION QUIMICO:</td>
+      <td class="patient-data">{{ estilo_vida.exp_quimico|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">DISCOTECAS:</td>
+      <td class="patient-data">{{ estilo_vida.discotecas|yesno:"Sí,No" }}</td>
+      <td class="data-label">TRAUMA ACUSTICO:</td>
+      <td class="patient-data">{{ estilo_vida.trauma_acustico|yesno:"Sí,No" }}</td>
+      <td class="data-label">EXPOSICION LABORAL AL RUIDO:</td>
+      <td class="patient-data">{{ estilo_vida.expos_laboral_ruido|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">TEC:</td>
+      <td class="patient-data">{{ estilo_vida.tec|yesno:"Sí,No" }}</td>
+      <td class="data-label">USO DE ARMAS DE FUEGO</td>
+      <td class="patient-data">{{ estilo_vida.armas_fuego|yesno:"Sí,No" }}</td>
+      <td class="data-label">AUDIFONOS:</td>
+      <td class="patient-data">{{ estilo_vida.audifonos|yesno:"Sí,No" }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">TAPONES:</td>
+      <td class="patient-data">{{ estilo_vida.get_tapones_display }}</td>
+      <td class="data-label">OREJERAS:</td>
+      <td class="patient-data">{{ estilo_vida.get_orejeras_display }}</td>
+      <td class="data-label">ALGODONES:</td>
+      <td class="patient-data">{{ estilo_vida.get_algodones_display }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">SISTOMATOLOGIA:</td>
+      <td class="patient-data">{{ estilo_vida.sistomatologia }}</td>
+      <td class="data-label">VIAJE RECIENTE < A 6 HORAS:</td>
+      <td class="patient-data">{{ estilo_vida.viaje_reciente|yesno:"Si,No" }}</td>
+      <td class="data-label">EXPOSICION RECIENTE A RUIDOS (18 HORAS):</td>
+      <td class="patient-data">{{ estilo_vida.exp_recien_ruid18|yesno:"Si,No" }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">ACUTENOS:</td>
+      <td class="patient-data">{{ estilo_vida.acutenos|yesno:"Si,No" }}</td>
+      <td class="data-label">HIPOACUSIA:</td>
+      <td class="patient-data">{{ estilo_vida.hipoacusia|yesno:"Si,No" }}</td>
+      <td class="data-label">OTALGIA:</td>
+      <td class="patient-data">{{ estilo_vida.otalgia|yesno:"Si,No" }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">ENF. DEL TRACTO RESPIRATORIO ACTUAL:</td>
+      <td class="patient-data">{{ estilo_vida.enf_tra_respiratorio|yesno:"Si,No" }}</td>
+      <td class="data-label">SECRESION OTICA:</td>
+      <td class="patient-data">{{ estilo_vida.secresion_otica|yesno:"Si,No" }}</td>
+      <td class="data-label">VERTIGO:</td>
+      <td class="patient-data">{{ estilo_vida.vertigo|yesno:"Si,No" }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">GARGANTA NORMAL:</td>
+      <td class="patient-data">{{ estilo_vida.garganta_normal|yesno:"Si,No" }}</td>
+      <td class="data-label">GARGANTA ANORMAL:</td>
+      <td class="patient-data">{{ estilo_vida.garganta_anormal|yesno:"Si,No" }}</td>
+      <td class="data-label">OIDO NORMAL:</td>
+      <td class="patient-data">{{ estilo_vida.oido_normal|yesno:"Si,No" }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">OIDO ANORMAL:</td>
+      <td class="patient-data">{{ estilo_vida.oido_anormal|yesno:"Si,No" }}</td>
+      <td class="data-label">OTOSCOPIA O.D.:</td>
+      <td class="patient-data">{{ estilo_vida.otoscopia_od|yesno:"Si,No" }}</td>
+      <td class="data-label">OTOSCOPIA O.I.:</td>
+      <td class="patient-data">{{ estilo_vida.otoscopia_oi|yesno:"Si,No" }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">DIAPAZONES OIDO DERECHO 250 Hz:</td>
+      <td class="patient-data">{{ estilo_vida.diapaz_od_250hz|yesno:"Si,No" }}</td>
+      <td class="data-label">DIAPAZONES OIDO DERECHO 500 Hz:</td>
+      <td class="patient-data">{{ estilo_vida.diapaz_od_500hz|yesno:"Si,No" }}</td>
+      <td class="data-label">DIAPAZONES OIDO DERECHO 1000 Hz:</td>
+      <td class="patient-data">{{ estilo_vida.diapaz_od_1000hz|yesno:"Si,No" }}</td>
+    </tr>
+    <tr>
+      <td class="data-label">DIAPAZONES OIDO IZQUIERDO 250 Hz:</td>
+      <td class="patient-data">{{ estilo_vida.diapaz_oi_250hz|yesno:"Si,No" }}</td>
+      <td class="data-label">DIAPAZONES OIDO IZQUIERDO 500 Hz:</td>
+      <td class="patient-data">{{ estilo_vida.diapaz_oi_500hz|yesno:"Si,No" }}</td>
+      <td class="data-label">DIAPAZONES OIDO IZQUIERDO 1000 Hz:</td>
+      <td class="patient-data">{{ estilo_vida.diapaz_oi_1000hz|yesno:"Si,No" }}</td>
+    </tr>
+  </tbody>
+</table>
