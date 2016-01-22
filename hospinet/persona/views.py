@@ -17,10 +17,14 @@
 from django.contrib.auth.decorators import permission_required
 from django.utils.decorators import method_decorator
 from django.views.generic import (CreateView, DetailView, UpdateView,
-                                  ListView, View)
+                                  ListView, View, TemplateView)
 from django.views.generic.edit import FormMixin
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.db.models.query_utils import Q
+from django.http import HttpResponse, Http404
+from lab.forms import ResultadoEditForm
+
+from lab.models import Resultado
 
 from persona.forms import (PersonaForm, FisicoForm, EstiloVidaForm,
                            AntecedenteForm, AntecedenteFamiliarForm,
@@ -29,9 +33,40 @@ from persona.forms import (PersonaForm, FisicoForm, EstiloVidaForm,
                            EmpleadorForm, EmpleoForm, PersonaDuplicateForm)
 from persona.models import (Persona, Fisico, EstiloVida, Antecedente,
                             AntecedenteFamiliar, AntecedenteObstetrico,
-                            AntecedenteQuirurgico, Empleo, Empleador)
+                            AntecedenteQuirurgico, Empleo, Empleador, RegistroConsulta)
 from users.mixins import LoginRequiredMixin
+from django.core.servers.basehttp import FileWrapper
+import mimetypes
+from django.conf import settings
+import os
 
+
+class PersonaDownloadView(TemplateView):
+
+
+    def get(self, request, *args, **kwargs):
+        filename = request.GET['image']
+        filepath = os.path.join(settings.MEDIA_ROOT, filename)  
+        wrapper = FileWrapper(open(filepath, 'rb'))
+        response = HttpResponse(wrapper, content_type="image/png")
+        response['Content-Disposition'] = "attachment; filename=%s" % filename
+        return response
+
+class PersonaDeleteView(TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        resultado = Resultado.objects.filter(pk = request.GET['exam_id']).exists()
+        if resultado:
+            Resultado.objects.get(pk = request.GET['exam_id']).delete()
+            return redirect(request.META['HTTP_REFERER'])
+        else:
+            raise Http404
+
+class PersonaEditView(UpdateView):
+
+    model = Resultado
+    form_class = ResultadoEditForm
+        
 
 class PersonaPermissionMixin(LoginRequiredMixin):
     @method_decorator(permission_required('persona.persona'))
@@ -64,7 +99,7 @@ class PersonaIndexView(ListView, PersonaPermissionMixin):
     paginate_by = 10
 
 
-class PersonaDetailView(DetailView, LoginRequiredMixin):
+class PersonaDetailView(LoginRequiredMixin, DetailView):
     """Permite mostrar los datos de una :class:`Persona`"""
 
     context_object_name = 'persona'
@@ -74,6 +109,8 @@ class PersonaDetailView(DetailView, LoginRequiredMixin):
 
         context = super(PersonaDetailView, self).get_context_data(**kwargs)
 
+        registroConsulta = RegistroConsulta.objects.filter(person=self.object).last()
+        context['registroConsulta'] = registroConsulta
         if self.object.sexo == 'F':
             antecedente_obstetrico = AntecedenteObstetrico(persona=self.object)
             antecedente_obstetrico.save()
@@ -88,6 +125,17 @@ class PersonaCreateView(CreateView, LoginRequiredMixin):
 
     model = Persona
     form_class = PersonaForm
+
+    def form_valid(self, form):
+        user = form.save()
+        personExist = Persona.objects.filter(identificacion = form.cleaned_data['identificacion']).exists()
+        if personExist:
+            person = Persona.objects.get(identificacion = form.cleaned_data['identificacion'])
+            RegistroConsulta.objects.create(person = person)
+            return redirect('/persona/%s' % person.pk)
+        else:
+            RegistroConsulta.objects.create(person = user)
+        return super(PersonaCreateView, self).form_valid(form)
 
 
 class PersonaUpdateView(UpdateView, LoginRequiredMixin):

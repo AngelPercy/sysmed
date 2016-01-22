@@ -21,5 +21,4 @@ urlpatterns = patterns('',
                            PersonaSearchView.as_view(
                                template_name='lab/persona_search.html'),
                            name='lab-search'),
-
                        )

@@ -56,13 +56,11 @@ urlpatterns = patterns('',
         {'edit_profile_form': CustomEditProfileForm},
         name='userena_profile_edit'),
     url(r'^accounts/', include('userena.urls')),
+
+    url(r'^media/(?P<path>.*)$','django.views.static.serve',
+            {'document_root':settings.MEDIA_ROOT,}
+        ),
 )
 
-urlpatterns += staticfiles_urlpatterns()
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT,
-        }),
-   )
+
 

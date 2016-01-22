@@ -93,7 +93,7 @@ class Persona(models.Model):
     celular = models.CharField(max_length=200, blank=True, verbose_name=u'CELULAR:')
     domicilio = models.CharField(max_length=200, blank=True, verbose_name=u'DOMICILIO:')
     email = models.CharField(max_length=200, blank=True, verbose_name=u'E-MAIL:')
-    fotografia = models.ImageField(upload_to='persona/foto//%Y/%m/%d',
+    fotografia = models.ImageField(upload_to='persona/foto/%Y/%m/%d',
                                    blank=True, null=True,
                                    help_text="El archivo debe estar en "
                                              "formato jpg o png y no pesar "
@@ -156,6 +156,15 @@ class Persona(models.Model):
             return today.year - born.year - 1
         else:
             return today.year - born.year
+
+
+class RegistroConsulta(models.Model):
+
+    person = models.ForeignKey(Persona)
+    date_consult = models.DateField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.person.nombre
 
 
 class Fisico(models.Model):

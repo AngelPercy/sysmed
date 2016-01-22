@@ -21,8 +21,8 @@ class Migration(migrations.Migration):
             name='Cargo',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('cantidad', models.DecimalField(default=1, max_digits=8, decimal_places=2)),
                 ('facturada', models.NullBooleanField(default=False)),
                 ('admision', models.ForeignKey(related_name='cargos', to='spital.Admision')),
@@ -38,8 +38,8 @@ class Migration(migrations.Migration):
             name='Devolucion',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('descripcion', models.TextField(max_length=200, null=True, blank=True)),
                 ('admision', models.ForeignKey(related_name='devoluciones', to='spital.Admision')),
                 ('cargo', models.ForeignKey(related_name='devoluciones', blank=True, to='inventory.ItemTemplate', null=True)),
@@ -56,8 +56,8 @@ class Migration(migrations.Migration):
             name='Dosis',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('estado', models.IntegerField(default=1, null=True, blank=True, choices=[(1, 'Pendiente'), (2, 'Rechazada'), (3, 'Administrada')])),
                 ('recomendacion', models.CharField(max_length=200, null=True, blank=True)),
             ],
@@ -77,9 +77,6 @@ class Migration(migrations.Migration):
                 ('admision', models.ForeignKey(related_name='evoluciones', to='spital.Admision')),
                 ('usuario', models.ForeignKey(related_name='evoluciones', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Excreta',
@@ -94,8 +91,6 @@ class Migration(migrations.Migration):
                 ('admision', models.ForeignKey(related_name='excretas', to='spital.Admision')),
                 ('usuario', models.ForeignKey(related_name='excretas', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
-            options={
-            },
             bases=(models.Model, nightingale.models.Turno),
         ),
         migrations.CreateModel(
@@ -106,9 +101,6 @@ class Migration(migrations.Migration):
                 ('signos_vitales', models.IntegerField(default=0, blank=True)),
                 ('admision', models.OneToOneField(to='spital.Admision')),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Glicemia',
@@ -120,8 +112,6 @@ class Migration(migrations.Migration):
                 ('admision', models.ForeignKey(related_name='glicemias', to='spital.Admision')),
                 ('usuario', models.ForeignKey(related_name='glicemias', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
-            options={
-            },
             bases=(models.Model, nightingale.models.Turno),
         ),
         migrations.CreateModel(
@@ -134,16 +124,14 @@ class Migration(migrations.Migration):
                 ('admision', models.ForeignKey(related_name='glucosurias', to='spital.Admision')),
                 ('usuario', models.ForeignKey(related_name='glucosurias', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
-            options={
-            },
             bases=(models.Model, nightingale.models.Turno),
         ),
         migrations.CreateModel(
             name='Honorario',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('monto', models.DecimalField(default=0, max_digits=10, decimal_places=2)),
                 ('medico', models.CharField(max_length=200, blank=True)),
                 ('facturada', models.NullBooleanField(default=False)),
@@ -156,7 +144,6 @@ class Migration(migrations.Migration):
                 'abstract': False,
                 'get_latest_by': 'modified',
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Ingesta',
@@ -170,8 +157,6 @@ class Migration(migrations.Migration):
                 ('admision', models.ForeignKey(related_name='ingestas', to='spital.Admision')),
                 ('usuario', models.ForeignKey(related_name='ingestas', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
-            options={
-            },
             bases=(models.Model, nightingale.models.Turno),
         ),
         migrations.CreateModel(
@@ -184,16 +169,14 @@ class Migration(migrations.Migration):
                 ('admision', models.ForeignKey(related_name='insulina', to='spital.Admision')),
                 ('usuario', models.ForeignKey(related_name='insulinas', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
-            options={
-            },
             bases=(models.Model, nightingale.models.Turno),
         ),
         migrations.CreateModel(
             name='Medicamento',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('inicio', models.DateTimeField(default=django.utils.timezone.now)),
                 ('intervalo', models.IntegerField(blank=True, null=True, choices=[(24, 'Cada 24 Horas'), (12, 'Cada 12 Horas'), (8, 'Cada 8 Horas'), (6, 'Cada 6 Horas'), (4, 'Cada 4 Horas')])),
                 ('unidades', models.CharField(max_length=200, blank=True)),
@@ -211,7 +194,6 @@ class Migration(migrations.Migration):
                 'abstract': False,
                 'get_latest_by': 'modified',
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='NotaEnfermeria',
@@ -224,8 +206,6 @@ class Migration(migrations.Migration):
                 ('admision', models.ForeignKey(related_name='notas_enfermeria', to='spital.Admision')),
                 ('usuario', models.ForeignKey(related_name='notas_enfermeria', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
-            options={
-            },
             bases=(models.Model, nightingale.models.Turno),
         ),
         migrations.CreateModel(
@@ -239,16 +219,13 @@ class Migration(migrations.Migration):
                 ('admision', models.ForeignKey(related_name='ordenes_medicas', to='spital.Admision')),
                 ('usuario', models.ForeignKey(related_name='ordenes_medicas', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='OxigenoTerapia',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('terminada', models.BooleanField(default=False)),
                 ('inicio', models.DateTimeField(null=True, blank=True)),
                 ('fin', models.DateTimeField(null=True, blank=True)),
@@ -279,16 +256,14 @@ class Migration(migrations.Migration):
                 ('admision', models.ForeignKey(related_name='signos_vitales', to='spital.Admision')),
                 ('usuario', models.ForeignKey(related_name='signos_vitales', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
-            options={
-            },
             bases=(models.Model, nightingale.models.Turno),
         ),
         migrations.CreateModel(
             name='Sumario',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('diagnostico', models.TextField(blank=True)),
                 ('procedimiento_efectuado', models.TextField(blank=True)),
                 ('condicion', models.TextField(blank=True)),
@@ -302,18 +277,15 @@ class Migration(migrations.Migration):
                 'abstract': False,
                 'get_latest_by': 'modified',
             },
-            bases=(models.Model,),
         ),
         migrations.AddField(
             model_name='dosis',
             name='medicamento',
             field=models.ForeignKey(related_name='dosis', to='nightingale.Medicamento'),
-            preserve_default=True,
         ),
         migrations.AddField(
             model_name='dosis',
             name='usuario',
             field=models.ForeignKey(related_name='dosis', blank=True, to=settings.AUTH_USER_MODEL, null=True),
-            preserve_default=True,
         ),
     ]

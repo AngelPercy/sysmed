@@ -18,7 +18,11 @@ from django.contrib import admin
 
 from persona.models import (Persona, EstiloVida, Fisico, Antecedente,
                             AntecedenteQuirurgico, AntecedenteObstetrico,
-                            AntecedenteFamiliar, Empleador, Empleo, Sede)
+                            AntecedenteFamiliar, Empleador, Empleo, Sede, RegistroConsulta)
+
+@admin.register(RegistroConsulta)
+class RegistroConsultaAdmin(admin.ModelAdmin):
+	pass
 
 
 class PersonaAdmin(admin.ModelAdmin):

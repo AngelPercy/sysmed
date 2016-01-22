@@ -17,7 +17,6 @@
 
 # Django settings for hospinet project.
 import os
-
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -97,7 +96,7 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -133,7 +132,7 @@ else:
     # Make sure to use a trailing slash.
     # Examples: "http://foo.com/static/admin/", "/static/admin/".
     ADMIN_MEDIA_PREFIX = '/static/admin/'
-
+MEDIA_URL = '/media/'
 # Additional locations of static files
 STATICFILES_DIRS = (
 # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -247,6 +246,7 @@ LOGGING = {
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
+    'django.template.context_processors.media',
     'django.contrib.auth.context_processors.auth',
     'django.contrib.messages.context_processors.messages',
     'hospinet.context_processors.chat'

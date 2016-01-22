@@ -24,7 +24,8 @@ from persona.views import (PersonaDetailView, PersonaCreateView,
                            AntecedenteQuirurgicoUpdateView,
                            AntecedenteQuirurgicoCreateView, PersonaSearchView,
                            EmpleoCreateView, PersonaDuplicateView,
-                           EmpleadorDetailView, EmpleadorCreateView)
+                           EmpleadorDetailView, EmpleadorCreateView, PersonaDownloadView,
+                           PersonaDeleteView, PersonaEditView)
 
 urlpatterns = patterns('',
 
@@ -35,6 +36,15 @@ urlpatterns = patterns('',
                        url(r'^(?P<pk>\d+)$',
                            PersonaDetailView.as_view(),
                            name='persona-view-id'),
+
+                       url(r'^(?P<pk>\d+)/descargar/$',
+                           PersonaDownloadView.as_view()),
+
+                       url(r'^(?P<pk>\d+)/eliminar/$',
+                           PersonaDeleteView.as_view()),
+
+                       url(r'^(?P<person_id>\d+)/editar/(?P<pk>\d+)/$',
+                           PersonaEditView.as_view()),
 
                        url(r'^(?P<pk>\d+)/estilovida$',
                            PersonaDetailView.as_view(

@@ -45,19 +45,18 @@ class Migration(migrations.Migration):
                 ('facturada', models.NullBooleanField(default=False)),
                 ('ultimo_cobro', models.DateTimeField(default=django.utils.timezone.now, null=True, blank=True)),
                 ('admitio', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
-                ('fiadores', models.ManyToManyField(related_name='fianzas', null=True, to='persona.Persona', blank=True)),
+                ('fiadores', models.ManyToManyField(related_name='fianzas', to='persona.Persona', blank=True)),
             ],
             options={
                 'permissions': (('admision', 'Permite al usuario gestionar admision'),),
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Deposito',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('monto', models.DecimalField(null=True, max_digits=7, decimal_places=2, blank=True)),
                 ('fecha', models.DateTimeField(default=django.utils.timezone.now, null=True, blank=True)),
                 ('recibo', models.IntegerField(null=True, blank=True)),
@@ -68,14 +67,13 @@ class Migration(migrations.Migration):
                 'abstract': False,
                 'get_latest_by': 'modified',
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Doctor',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('nombre', models.CharField(max_length=50)),
             ],
             options={
@@ -83,22 +81,6 @@ class Migration(migrations.Migration):
                 'abstract': False,
                 'get_latest_by': 'modified',
             },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='Especialidad',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
-                ('nombre', models.CharField(max_length=50)),
-            ],
-            options={
-                'ordering': ('-modified', '-created'),
-                'abstract': False,
-                'get_latest_by': 'modified',
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Habitacion',
@@ -109,16 +91,13 @@ class Migration(migrations.Migration):
                 ('estado', models.CharField(blank=True, max_length=1, choices=[(b'D', b'Disponible'), (b'O', b'Ocupada'), (b'M', b'Mantenimiento')])),
                 ('item', models.ForeignKey(related_name='habitaciones', blank=True, to='inventory.ItemTemplate', null=True)),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Laboratorio',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('nombre', models.CharField(max_length=50)),
             ],
             options={
@@ -126,14 +105,13 @@ class Migration(migrations.Migration):
                 'abstract': False,
                 'get_latest_by': 'modified',
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='PreAdmision',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('completada', models.BooleanField(default=False)),
                 ('transferir_cobros', models.BooleanField(default=False)),
                 ('emergencia', models.ForeignKey(related_name='preadmisiones', to='emergency.Emergencia')),
@@ -143,30 +121,25 @@ class Migration(migrations.Migration):
                 'abstract': False,
                 'get_latest_by': 'modified',
             },
-            bases=(models.Model,),
         ),
         migrations.AddField(
             model_name='admision',
             name='habitacion',
             field=models.ForeignKey(related_name='admisiones', blank=True, to='spital.Habitacion', null=True),
-            preserve_default=True,
         ),
         migrations.AddField(
             model_name='admision',
             name='paciente',
             field=models.ForeignKey(related_name='admisiones', to='persona.Persona'),
-            preserve_default=True,
         ),
         migrations.AddField(
             model_name='admision',
             name='referencias',
-            field=models.ManyToManyField(related_name='referencias', null=True, to='persona.Persona', blank=True),
-            preserve_default=True,
+            field=models.ManyToManyField(related_name='referencias', to='persona.Persona', blank=True),
         ),
         migrations.AddField(
             model_name='admision',
             name='tipo_de_venta',
             field=models.ForeignKey(blank=True, to='inventory.TipoVenta', null=True),
-            preserve_default=True,
         ),
     ]

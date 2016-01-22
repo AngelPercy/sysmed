@@ -18,6 +18,7 @@
 from crispy_forms.layout import Fieldset
 from lab.models import Resultado
 from persona.forms import BasePersonaForm
+from django import forms
 
 
 class ResultadoForm(BasePersonaForm):
@@ -29,3 +30,27 @@ class ResultadoForm(BasePersonaForm):
         super(ResultadoForm, self).__init__(*args, **kwargs)
         self.helper.layout = Fieldset(u'Agregar Resultado de Laboratorio',
                                       *self.field_names)
+
+
+class ResultadoEditForm(BasePersonaForm):
+
+    archivo = forms.ImageField(required = False)
+
+    class Meta:
+        model = Resultado
+        exclude = ('archivo',)
+   #      widgets = {
+			# 'archivo' : forms.ImageField(attrs={
+			# 		'require' : False
+			# 	})
+			# }
+
+
+    # def __init__(self, *args, **kwargs):
+    #     super(ResultadoEditForm, self).__init__(*args, **kwargs)
+    #     self.helper.layout = Fieldset(u'Agregar Resultado de Laboratorio',
+    #                                   *self.field_names)
+
+    # def clean(self):
+    # 	print "asdasd"
+    # 	print self.form.cleaned_data
